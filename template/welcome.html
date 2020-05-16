@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Tour</title>
+    <link rel="stylesheet" type="text/css" href="{{ static_url('css/green.css') }}" />
+</head>
+<body>
+    <script src="{{ static_url('js/vue.js') }}"></script>
+    <div id = "show_line">
+        <a href="{{link}}">
+            <p id = 'title'>House Tour</p>
+            <p id = 'slogan'>Welcome To My House</p>
+        </a>
+    </div>
+    <div class = 'lr'>
+        <button class ="btn"  @click = "risVisible = true, lisVisible = false" >注册</button>
+        <register v-if = 'risVisible' class="item" title = "注册" @on-close = 'close_r'></register>
+        <button class ='btn'@click = "lisVisible =true,risVisible = false">登陆</button>
+        <login v-if = 'lisVisible' class="item" title = "注册" @on-close = 'close_l'></login>
+    </div>
+    <script src="{{ static_url('js/register.js') }}"></script>
+    <script src="{{ static_url('js/login.js') }}"></script>
+    <script type="text/x-template" id = 'register-template'>
+        <div class='reg' >
+            <div class = 'section'>
+                <div style="float:right;">
+                    <button style="margin:-20px;padding:20px;border-style:none;outline:none;background:transparent; cursor: pointer;" @click = 'closeHandler'>
+                        <svg viewBox='0 0 24 24' role = 'img' style="height: 16px; width: 16px; display: block; fill: rgb(118, 118, 118);">
+                            <path d="m23.25 24c-.19 0-.38-.07-.53-.22l-10.72-10.72-10.72 10.72c-.29.29-.77.29-1.06 0s-.29-.77 0-1.06l10.72-10.72-10.72-10.72c-.29-.29-.29-.77 0-1.06s.77-.29 1.06 0l10.72 10.72 10.72-10.72c.29-.29.77-.29 1.06 0s .29.77 0 1.06l-10.72 10.72 10.72 10.72c.29.29.29.77 0 1.06-.15.15-.34.22-.53.22" fill-rule = 'evenodd'></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id = 'name'>注册</div>
+                <div>
+                    <div class = 'la tip' >用户昵称</div>
+                    <div class = 'b'>
+                        <input class ='inp' placeholder = "ID" ></input>
+                    </div>
+                </div>
+                <div>
+                    <div class = 'la tip' >设置密码</div>
+                    <div class = 'b'>
+                        <input class ='inp' type='password'placeholder = "password" ></input>
+                    </div>
+                </div>
+                <div>
+                    <div class = 'la tip' >再次输入密码</div>
+                    <div class = 'b'>
+                        <input class ='inp' type='password'  placeholder = "password" ></input>
+                    </div>
+                </div>
+                <div>
+                    <button id = 'submit' @click = "register">立即注册</button>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-template" id = 'login-template'>
+        <div class='log' >
+            <div class = 'section'>
+                <div style="float:right;">
+                    <button style="margin:-20px;padding:20px;border-style:none;outline:none;background:transparent; cursor: pointer;" @click = 'closeHandler'>
+                        <svg viewBox='0 0 24 24' role = 'img' style="height: 16px; width: 16px; display: block; fill: rgb(118, 118, 118);">
+                            <path d="m23.25 24c-.19 0-.38-.07-.53-.22l-10.72-10.72-10.72 10.72c-.29.29-.77.29-1.06 0s-.29-.77 0-1.06l10.72-10.72-10.72-10.72c-.29-.29-.29-.77 0-1.06s.77-.29 1.06 0l10.72 10.72 10.72-10.72c.29-.29.77-.29 1.06 0s .29.77 0 1.06l-10.72 10.72 10.72 10.72c.29.29.29.77 0 1.06-.15.15-.34.22-.53.22" fill-rule = 'evenodd'></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id = 'name'>登陆</div>
+                <div>
+                    <div class = 'la tip' >用户昵称</div>
+                    <div class = 'b'>
+                        <input class ='inp' placeholder = "ID" ></input>
+                    </div>
+                </div>
+                <div>
+                    <div class = 'la tip' >密码</div>
+                    <div class = 'b'>
+                        <input class ='inp' type='password'placeholder = "password" ></input>
+                    </div>
+                </div>
+                <div>
+                    <button id = 'submit' @click = "register">立即登陆</button>
+                </div>
+            </div>
+        </div>
+    </script>
+</body>
+<style>
+    body{
+    background-color:#7fc181;
+}
+</style>
+</html>
