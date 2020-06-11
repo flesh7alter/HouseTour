@@ -1,0 +1,64 @@
+<script type="text/x-template" id = 'register-template'>
+    <div class='reg' >
+        <div class = 'section'>
+            <div style="float:right;">
+                <button style="margin:-20px;padding:20px;border-style:none;outline:none;background:transparent; cursor: pointer;" @click = 'closeHandler'>
+                    <svg viewBox='0 0 24 24' role = 'img' style="height: 16px; width: 16px; display: block; fill: rgb(118, 118, 118);">
+                        <path d="m23.25 24c-.19 0-.38-.07-.53-.22l-10.72-10.72-10.72 10.72c-.29.29-.77.29-1.06 0s-.29-.77 0-1.06l10.72-10.72-10.72-10.72c-.29-.29-.29-.77 0-1.06s.77-.29 1.06 0l10.72 10.72 10.72-10.72c.29-.29.77-.29 1.06 0s .29.77 0 1.06l-10.72 10.72 10.72 10.72c.29.29.29.77 0 1.06-.15.15-.34.22-.53.22" fill-rule = 'evenodd'></path>
+                    </svg>
+                </button>
+            </div>
+            <div id = 'name'>注册</div>
+            <div>
+                <div class = 'la tip' >用户昵称</div>
+                <div class = 'b'>
+                    <input ref = 'userId' class ='inp' placeholder = "ID" />
+                </div>
+            </div>
+            <div>
+                <div class = 'la tip' >设置密码</div>
+                <div class = 'b'>
+                    <input ref= 'pwd'class ='inp' type='password'placeholder = "password" />
+                </div>
+            </div>
+            <div>
+                <div class = 'la tip' >再次输入密码</div>
+                <div class = 'b'>
+                    <input ref = 'pwd2' class ='inp' type='password'  placeholder = "password" />
+                </div>
+            </div>
+            <div>
+                <button id = 'submit' @click = "registerHandler">立即注册</button>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/x-template" id = 'login-template'>
+    <div class='log' >
+        <div class = 'section'>
+            <div style="float:right;">
+                <button style="margin:-20px;padding:20px;border-style:none;outline:none;background:transparent; cursor: pointer;" @click = 'closeHandler'>
+                    <svg viewBox='0 0 24 24' role = 'img' style="height: 16px; width: 16px; display: block; fill: rgb(118, 118, 118);">
+                        <path d="m23.25 24c-.19 0-.38-.07-.53-.22l-10.72-10.72-10.72 10.72c-.29.29-.77.29-1.06 0s-.29-.77 0-1.06l10.72-10.72-10.72-10.72c-.29-.29-.29-.77 0-1.06s.77-.29 1.06 0l10.72 10.72 10.72-10.72c.29-.29.77-.29 1.06 0s .29.77 0 1.06l-10.72 10.72 10.72 10.72c.29.29.29.77 0 1.06-.15.15-.34.22-.53.22" fill-rule = 'evenodd'></path>
+                    </svg>
+                </button>
+            </div>
+            <div id = 'name'>登陆</div>
+            <div>
+                <div class = 'la tip' >用户昵称</div>
+                <div class = 'b'>
+                    <input ref= 'l_userId' class ='inp' placeholder = "ID" ></input>
+                </div>
+            </div>
+            <div>
+                <div class = 'la tip' >密码</div>
+                <div class = 'b'>
+                    <input ref = 'l_pwd'class ='inp' type='password'placeholder = "password" ></input>
+                </div>
+            </div>
+            <div>
+                <button id = 'submit' @click = "login">立即登陆</button>
+            </div>
+        </div>
+    </div>
+</script>

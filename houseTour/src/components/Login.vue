@@ -1,6 +1,5 @@
-Vue.component('login', {
-    template: `
-    <div class='log' >
+<template>
+     <div class='log' >
             <div class = 'section'>
                 <div style="float:right;">
                     <button style="margin:-20px;padding:20px;border-style:none;outline:none;background:transparent; cursor: pointer;" @click = 'closeHandler'>
@@ -13,41 +12,53 @@ Vue.component('login', {
                 <div>
                     <div class = 'la tip' >用户昵称</div>
                     <div class = 'b'>
-                        <input ref= 'l_userId' class ='inp' placeholder = "ID" ></input>
+                        <input ref= 'l_userId' class ='inp' placeholder = "ID" />
                     </div>
                 </div>
                 <div>
                     <div class = 'la tip' >密码</div>
                     <div class = 'b'>
-                        <input ref = 'l_pwd'class ='inp' type='password'placeholder = "password" ></input>
+                        <input ref = 'l_pwd' class ='inp' type='password' placeholder = "password" />
                     </div>
                 </div>
                 <div>
                     <div class = 'la tip' ref = 'l_tips' style = 'font-size:13px;margin-bottom: 0;margin-top:15px;margin-left:25%;'></div>
                 </div>
                 <div>
-                    <button id = 'submit' @click = "login">立即登陆</button>
+                    <button id = 'submit' @click = "loginHandler">立即登陆</button>
                 </div>
             </div>
         </div>
-    `,
-    props: {
-        title:{
-            type:String
-        },
+</template>
+<script>
+import request from '@/server/request.js'
+export default {
+  name: 'login',
+  methods: {
+    closeHandler () {
+      this.$emit('on-close')
     },
-    
-    methods: {
-        closeHandler(){
-            this.$emit("on-close");
-        },
-        login(){
-            var info = {
-                name:this.$refs.l_userId.value,
-                pwd:this.$refs.l_pwd.value,
-            }
-            this.$emit("login",info);
-            
+    loginHandler () {
+      var userPwd = this.$refs.l_pwd.value
+      var userId = this.$refs.l_userId.value
+      if (userId.length > 15) {
+        this.$refs.l_tips.textContent = '用户名不符合要求'
+      } else {
+        var info = {
+          name: userId,
+          pwd: userPwd
         }
+        this.login(info)
+      }
+    },
+    login: async function (info) {
+      let data = await request.post('/login', info)
+      if (data.status === 0) {
+        this.$refs.l_tips.textContent = '用户名或密码错误'
+      } else {
+        this.$emit('login', info.name)
+      }
     }
-})
+  }
+}
+</script>
