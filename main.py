@@ -2,16 +2,16 @@ import tornado.ioloop
 import tornado.web
 from tornado.web import url
 import json
-import pymysql
 
 # db = pymysql.Connection(host='localhost',user='root',password='MyNewPass4!',
 #                    database='aaa',charset='utf8',port=3306)
-# class MainHandler(tornado.web.RequestHandler):
-#     def get(self):
-#         self.render('houses.html')
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render('houses.html')
+
 class BaseHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "http://localhost:8080") # 这个地方可以写域名
+        self.set_header("Access-Control-Allow-Origin", "http://localhost:8080") # domain here
         self.set_header('Access-Control-Allow-Credentials', 'true')
         self.set_header("Access-Control-Allow-Headers", "x-requested-with,Content-Type,charset")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
